@@ -1,0 +1,96 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="cooperativa.listado_socios_tree">
+      <field name="name">Listado de socios</field>
+      <field name="model">cooperativa.socios_model</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id_socio"/>
+          <field name="foto"/>
+          <field name="name"/>
+          <field name="apellidos"/>
+          <field name="dni"/>
+          <field name="fecha"/>
+          <field name="telf"/>
+          <field name="email"/>
+          <field name="saldo"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="cooperativa.socios_model_form">
+      <field name="name">Formulario del socio</field>
+      <field name="model">cooperativa.socios_model</field>
+      <field name="arch" type="xml">
+        <form string="Nuevo socio">
+          <sheet>
+            <group id="grupoiz">
+              <field name="id_socio"/>            
+              <field name="name"/>     
+              <field name="dni"/>             
+              <field name="telf"/>             
+              <field name="saldo"/>
+            </group>
+
+            <group id="grupoder">
+              <field name="foto" widget="image" style="width: 120px; height: 150px;" />
+              <field name="apellidos"/>
+              <field name="fecha"/>
+              <field name="email"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cooperativa.socios_action_window">
+      <field name="name">socios window</field>
+      <field name="res_model">cooperativa.socios_model</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="cooperativa.action_window">
+      <field name="name">cooperativa window</field>
+      <field name="res_model">cooperativa.cooperativa</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="cooperativa.action_server">
+      <field name="name">cooperativa server</field>
+      <field name="model_id" ref="model_cooperativa_cooperativa"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="cooperativa" id="cooperativa.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="cooperativa.menu_1" parent="cooperativa.menu_root"/>
+    <menuitem name="Menu 2" id="cooperativa.menu_2" parent="cooperativa.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="cooperativa.menu_1_list" parent="cooperativa.menu_1"
+              action="cooperativa.action_window"/>
+    <menuitem name="Server to list" id="cooperativa" parent="cooperativa.menu_2"
+              action="cooperativa.action_server"/>
+-->
+  </data>
+</odoo>
